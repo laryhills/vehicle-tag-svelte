@@ -26,6 +26,14 @@
   let files
   let columns
   let items
+
+  const handleFileClick = async (dataURL, fileName) => {
+    const downloadLink = document.createElement('a')
+    downloadLink.href = dataURL
+    downloadLink.download = fileName
+    downloadLink.click()
+  }
+
   const uploadData = async () => {
     loadingAddTag = true
     if (!files) {
@@ -79,6 +87,7 @@
           items = rowObject
 
           // check if avaliable first
+          // MAKE BACKEND ACCEPT ARRAY AND USE stores to check tags
           for (let tag of items) {
             try {
               let response = await axios.get(
@@ -147,9 +156,16 @@
       <div class="card-header-title title-special">
         <div>Upload Vehicle Tags</div>
         <div>
-          <a href="/docs/upload_template.xlsx" download>
+          <!--<a href="/docs/upload_template.xlsx" download>
             Save This As To Download Excel Template
-          </a>
+          </a>-->
+          <button
+            on:click={() =>
+              handleFileClick(
+                `/docs/upload_template.xlsx`,
+                `Upload tags template.pdf`
+              )}>Download Excel Template</button
+          >
         </div>
       </div>
     </div>
