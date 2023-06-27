@@ -39,7 +39,7 @@
 
   const loadTagsData = async () => {
     try {
-      let response = await axios.get(`${process.env.API_ROOT}/api/tags`)
+      let response = await axios.get(`${process.env.API_ROOT}/api/v1/tags`)
       if (!response.data.get) {
         toastr.warning(response.data.message)
       } else {
@@ -102,7 +102,7 @@
     closeEditModal()
     try {
       const response = await axios.put(
-        `${process.env.API_ROOT}/api/tags/${updatedTag.id}`,
+        `${process.env.API_ROOT}/api/v1/tags/${updatedTag.id}`,
         updatedTag
       )
       if (!response.data.update) {
@@ -133,7 +133,7 @@
     const id = tag.id
     try {
       const response = await axios.delete(
-        `${process.env.API_ROOT}/api/tags/${id}`
+        `${process.env.API_ROOT}/api/v1/tags/${id}`
       )
       if (!response.data.delete) {
         toastr.error('An Error Occurred')
@@ -304,7 +304,7 @@
           <div class="my-1">
             <label class="checkbox">
               <input type="checkbox" bind:checked={withBarcode} />
-              With BarCodes
+              With QrCodes
             </label>
           </div>
 

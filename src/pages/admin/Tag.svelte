@@ -15,7 +15,7 @@
   const searchTag = async (tagNo) => {
     try {
       let response = await axios.get(
-        `${process.env.API_ROOT}/api/tags/search/${tagNo}`
+        `${process.env.API_ROOT}/api/v1/tags/search/${tagNo}`
       )
       if (!response.data.search) {
         toastr.warning(response.data.message)

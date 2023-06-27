@@ -91,14 +91,14 @@
           for (let tag of items) {
             try {
               let response = await axios.get(
-                `${process.env.API_ROOT}/api/tags/${tag.tag_no}`
+                `${process.env.API_ROOT}/api/v1/tags/${tag.tag_no}`
               )
               if (!response.data.find) {
                 // upload to database
                 try {
                   tag.slug = tag.tag_no.toLowerCase()
                   const response = await axios.post(
-                    `${process.env.API_ROOT}/api/tags`,
+                    `${process.env.API_ROOT}/api/v1/tags`,
                     tag
                   )
                   if (!response.data.creation) {
@@ -160,12 +160,15 @@
             Save This As To Download Excel Template
           </a>-->
           <button
+            class="button is-secondary is-small"
             on:click={() =>
               handleFileClick(
                 `/docs/upload_template.xlsx`,
                 `Upload tags template.pdf`
-              )}>Download Excel Template</button
+              )}
           >
+            <span class="is-bold">Download Excel Template</span>
+          </button>
         </div>
       </div>
     </div>

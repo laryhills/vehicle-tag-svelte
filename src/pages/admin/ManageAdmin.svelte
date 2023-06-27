@@ -63,7 +63,7 @@
       await schema.validate(values, { abortEarly: false })
       try {
         const response = await axios.post(
-          `${process.env.API_ROOT}/api/register`,
+          `${process.env.API_ROOT}/api/v1/register`,
           values
         )
         if (!response.data.register) {
@@ -96,7 +96,7 @@
   const loadAdminList = async () => {
     loadingAdminList = true
     try {
-      let response = await axios.get(`${process.env.API_ROOT}/api/users`)
+      let response = await axios.get(`${process.env.API_ROOT}/api/v1/users`)
       adminList = await response.data
       adminList = await adminList.filter(function (obj) {
         return obj.id !== user.id
@@ -112,7 +112,7 @@
     // adminData.status = !adminData.status
     try {
       const response = await axios.put(
-        `${process.env.API_ROOT}/api/user/${adminData.id}`,
+        `${process.env.API_ROOT}/api/v1/users/${adminData.id}`,
         adminData
       )
       if (!response.data.update) {

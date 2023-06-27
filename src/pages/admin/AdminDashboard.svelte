@@ -15,7 +15,7 @@
 
   const getLogs = async () => {
     try {
-      let response = await axios.get(`${process.env.API_ROOT}/api/log`)
+      let response = await axios.get(`${process.env.API_ROOT}/api/v1/log`)
       if (!response.data.getLog) {
         loadingLog = false
         toastr.warning(response.data.message)
@@ -37,7 +37,7 @@
     loadingLog = true
     showMobileMenu.set(false)
     try {
-      let response = await axios.get(`${process.env.API_ROOT}/api/count`)
+      let response = await axios.get(`${process.env.API_ROOT}/api/v1/count`)
       if (!response.data.count) {
         toastr.warning(response.data.message)
       } else {
@@ -61,7 +61,7 @@
   //   loadingClearLog = true
   //   if (confirm('Are you sure?')) {
   //     try {
-  //       const response = await axios.delete(`${process.env.API_ROOT}/api/log`)
+  //       const response = await axios.delete(`${process.env.API_ROOT}/api/v1/log`)
   //       if (!response.data.clearLog) {
   //         loadingClearLog = false
   //         toastr.warning(response.data.message)

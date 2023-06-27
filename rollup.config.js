@@ -6,17 +6,15 @@ import { terser } from 'rollup-plugin-terser'
 import css from 'rollup-plugin-css-only'
 
 import json from 'rollup-plugin-json'
-import replace from 'rollup-plugin-replace'
+// import replace from 'rollup-plugin-replace'
 
 import autoPreprocess from 'svelte-preprocess'
 
 const production = !process.env.ROLLUP_WATCH
 
-//In production it will use the domain
-//since the front end and backend will be in same domain
-const API_ROOT = production
-  ? 'http://191.168.6.199:8000'
-  : 'http://localhost:8000'
+// const API_ROOT = production
+//   ? 'http://191.168.6.199:8000'
+//   : 'http://localhost:8000'
 
 function serve() {
   let server
@@ -52,7 +50,6 @@ export default {
     file: 'public/build/bundle.js',
   },
   plugins: [
-    replace({ 'process.env.API_ROOT': JSON.stringify(API_ROOT) }),
     svelte({
       compilerOptions: {
         // enable run-time checks when not in production

@@ -74,7 +74,7 @@
       values.slug = values.tag_no.toLowerCase()
       try {
         const response = await axios.post(
-          `${process.env.API_ROOT}/api/tags`,
+          `${process.env.API_ROOT}/api/v1/tags`,
           values
         )
         if (!response.data.creation) {

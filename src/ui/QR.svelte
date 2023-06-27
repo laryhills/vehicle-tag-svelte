@@ -13,7 +13,7 @@
       width: 240, // Widht
       height: 240, // Height
       quietZone: 10,
-      logo: '/images/afit_logo.png',
+      logo: '/images/logo.png',
     }
     new QRCode(node, options)
   })

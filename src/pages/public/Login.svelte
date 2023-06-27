@@ -34,7 +34,7 @@
       await schema.validate(values, { abortEarly: false })
       try {
         const response = await axios.post(
-          `${process.env.API_ROOT}/api/login`,
+          `${process.env.API_ROOT}/api/v1/login`,
           values,
           {
             withCredentials: true,
@@ -76,11 +76,12 @@
           <form action="" class="box" on:submit|preventDefault={login}>
             <div class="has-text-centered">
               <img
-                src="/images/afit_login_logo.png"
+                src="/images/logo.png"
                 alt="brand-logo"
                 class="is-fullwidth"
                 style="max-height:55px;"
               />
+              <h1>Vehicle Tagging System</h1>
             </div>
             <div class="field">
               <label for="" class="label">Email</label>

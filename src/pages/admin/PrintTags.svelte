@@ -18,7 +18,7 @@
   let tags = []
   const loadTagsData = async () => {
     try {
-      let response = await axios.get(`${process.env.API_ROOT}/api/tags`)
+      let response = await axios.get(`${process.env.API_ROOT}/api/v1/tags`)
       if (!response.data.get) {
         toastr.warning(response.data.message)
       } else {
@@ -32,7 +32,7 @@
 
   onMount(async () => {
     try {
-      let response = await axios.get(`${process.env.API_ROOT}/api/user`)
+      let response = await axios.get(`${process.env.API_ROOT}/api/v1/users`)
       const user = await response.data
       auth = true
     } catch (e) {

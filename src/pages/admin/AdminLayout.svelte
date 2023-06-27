@@ -19,7 +19,7 @@
 
   onMount(async () => {
     try {
-      let response = await axios.get(`${process.env.API_ROOT}/api/user`)
+      let response = await axios.get(`${process.env.API_ROOT}/api/v1/user`)
       const user = await response.data
       admin.set(user)
       authenticated.set(true)
@@ -37,7 +37,7 @@
       admin.set({})
       totalTags.set(null)
 
-      await axios.post(`${process.env.API_ROOT}/api/logout`)
+      await axios.get(`${process.env.API_ROOT}/api/v1/logout`)
       navigateTo('login')
     } catch (e) {
       console.log(e)
@@ -53,11 +53,7 @@
   <nav class="navbar is-dark is-fixed-top">
     <div class="navbar-brand">
       <a href="/" class="navbar-item">
-        <img
-          src="/images/afit_logo1.png"
-          alt="brand-logo"
-          style="max-height:45px;"
-        />
+        <img src="/images/logo.png" alt="brand-logo" style="max-height:45px;" />
       </a>
       <li class="navbar-burger" on:click={handleMobileMenu}>
         <span class="mt-2" />
@@ -67,7 +63,7 @@
     </div>
 
     <div class="navbar-menu" class:is-active={$showMobileMenu}>
-      <div class="navbar-end">        
+      <div class="navbar-end">
         <SideToTopMenu {adminRoutes} {currentRoute} />
         <div class="navbar-item has-dropdown is-hoverable">
           <div class="navbar-link is-arrowless">
